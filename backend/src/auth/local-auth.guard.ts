@@ -11,9 +11,9 @@ import { Request } from 'express';
   export class LocalAuthGuard extends AuthGuard('local') {
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest<Request>();
-        // request.body = {};
-        // request.body.email = 't.berteau@test.com';
-        // request.body.password = 'password123';
+        request.body = {};
+        request.body.email = 't.berteau@test.com';
+        request.body.password = 'password123';
         console.log(request);
 
         // Add your custom authentication logic here

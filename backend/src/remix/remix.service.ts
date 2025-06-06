@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { AuthService } from '../auth/auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class RemixService {
   constructor(
-    private readonly prisma: PrismaService,
+    public readonly prisma: PrismaService,
+    public readonly auth: AuthService,
   ){}
 
   public readonly getHello = (): string => {

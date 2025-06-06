@@ -4,6 +4,7 @@ import { LocalStrategy } from './local.strategy';
 import { LocalAuthGuard } from './local-auth.guard';
 import { CookieSerializer } from './cookie-serializer';
 import { PrismaService } from '../prisma/prisma.service';
+import { AuthService } from './auth.service';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PrismaService } from '../prisma/prisma.service';
     }),
   ],
   controllers: [],
-  providers: [LocalStrategy, LocalAuthGuard, CookieSerializer, PrismaService],
+  providers: [LocalStrategy, LocalAuthGuard, CookieSerializer, PrismaService, AuthService],
+  exports: [AuthService]
 })
 export class AuthModule { }

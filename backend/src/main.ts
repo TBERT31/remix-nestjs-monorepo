@@ -6,6 +6,7 @@ import {RedisStore} from "connect-redis";
 import session from 'express-session';
 import Redis from "ioredis";
 import passport from 'passport';
+import { HttpExceptionFilter } from './auth/exception.filter';
 import { urlencoded } from 'body-parser';
 
 async function bootstrap() {
@@ -51,6 +52,8 @@ async function bootstrap() {
     maxAge: '1y',
     index: false,
   });
+
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   app.use(passport.initialize());
   app.use(passport.session());
